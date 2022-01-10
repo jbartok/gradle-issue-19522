@@ -1,0 +1,9 @@
+tasks.register('copyFiles', Copy) {
+    from(layout.projectDirectory) {
+        include "files/**"
+    }
+    into layout.projectDirectory.dir("copiedFiles")
+    filesMatching("**/folderA/**") {
+        it.setPath(it.getPath().replace("folderA", "folderB"))
+    }
+}
